@@ -1,0 +1,19 @@
+<project name="corejava" basedir="." default="corejava.jar">
+	<property file="build.properties" />
+	<property name="corejava.src" location="src/CoreJava" />
+	<property name="corejava.build" location="${build}/CoreJava" />
+	<property name="corejava.jar" location="${dist}/corejava.jar" />
+
+	<target name="corejava" description="compile core java examples ">
+		<mkdir dir="${corejava.build}" />
+
+		<!-- Compile the java code from ${src} into ${build} -->
+		<javac includeantruntime="false" srcdir="${corejava.src}" destdir="${build}" />
+	</target>
+
+	<target name="corejava.jar" description="core java JAR the Task"
+		depends="corejava">
+		<jar destfile="${corejava.jar}" basedir="${corejava.build}" />
+	</target>
+
+</project>

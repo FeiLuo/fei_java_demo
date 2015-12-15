@@ -1,0 +1,19 @@
+<project name="action" basedir="." default="action.jar">
+	<property file="build.properties" />
+ 	<property name="action.src" location="src/Actions" />
+	<property name="action.build" location="${build}/Actions" />
+	<property name="action.jar" location="${dist}/action.jar" />
+	
+	<target name="action" description="compile actions ">
+		<mkdir dir="${action.build}" />
+
+		<!-- Compile the java code from ${src} into ${build} -->
+		<javac includeantruntime="false" srcdir="${action.src}" destdir="${build}" />
+	</target>
+
+	<target name="action.jar" description="action JAR the Task"
+		depends="action">
+		<jar destfile="${action.jar}" basedir="${action.build}" />
+	</target>
+
+</project>

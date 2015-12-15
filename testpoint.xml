@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="testpoint" basedir="." default="all">
+	<property file="build.properties" />
+
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp />
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${build}" />
+		<mkdir dir="${dist}" />
+	</target>
+
+	<target name="action" depends="init">
+		<ant antfile="action.xml" inheritAll="false" />
+	</target>
+
+	<target name="corejava" depends="init">
+		<ant antfile="corejava.xml" inheritAll="false" />
+	</target>
+
+	<target name="all" depends="action, corejava"
+		description="compile all">
+	</target>
+
+	<target name="clean" description="clean up">
+		<!-- Delete the ${build} and ${dist} directory trees -->
+		<delete dir="${build}" />
+		<delete dir="${dist}" />
+	</target>
+
+</project>
